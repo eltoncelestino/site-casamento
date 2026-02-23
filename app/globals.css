@@ -1,16 +1,34 @@
 @import "tailwindcss";
 
+/* ============================= */
+/* 🌿 CONFIGURAÇÃO GLOBAL */
+/* ============================= */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* ============================= */
+/* 🎨 TEMA PERSONALIZADO */
+/* ============================= */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* 🎨 PALETA CLARICE & ELTON */
+  --color-terracota: #C65D3B;
+  --color-laranja: #F28C28;
+  --color-creme: #FDF6F0;
 }
+
+/* ============================= */
+/* 🌙 DARK MODE */
+/* ============================= */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -18,6 +36,10 @@
     --foreground: #ededed;
   }
 }
+
+/* ============================= */
+/* 🖋 BASE */
+/* ============================= */
 
 body {
   background: var(--background);
