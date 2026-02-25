@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabase"
+import Countdown from "./components/Countdown"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface Gift {
   id: string
@@ -93,21 +95,8 @@ export default function Home() {
         <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#A34320]/10 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 py-12">
+      <div className="relative w-full px-6 md:px-12 py-12">
         
-        {/* NAVEGAÇÃO */}
-        <nav className="flex justify-between items-center mb-16 animate-in fade-in slide-in-from-top-4 duration-1000">
-          <span className="text-xl font-serif tracking-widest text-[#C65D3B]">CLARICE & ELTON</span>
-          {step !== "intro" && (
-            <button 
-              onClick={() => {setStep("intro"); setSuccessGift(null)}} 
-              className="text-sm uppercase tracking-widest hover:text-[#C65D3B] transition-colors border-b border-transparent hover:border-[#C65D3B]"
-            >
-              ← Início
-            </button>
-          )}
-        </nav>
-
         {/* ETAPA 1: HOME */}
         {step === "intro" && (
           <div className="flex flex-col items-center justify-center min-h-[70vh] text-center animate-in fade-in zoom-in-95 duration-1000">
@@ -123,6 +112,19 @@ export default function Home() {
                 Presente via PIX
               </button>
             </div>
+            <Countdown />
+            <section className="mt-24 text-center">
+              <h2 className="text-3xl text-[#C65D3B] font-semibold mb-6">
+                Nosso Grande Dia
+              </h2>
+
+              <p className="text-lg">
+                09 de Maio de 2026
+              </p>
+              <p className="text-lg mb-4">
+                às 16:00
+              </p>
+            </section>
           </div>
         )}
 
@@ -130,6 +132,17 @@ export default function Home() {
         {step === "name" && (
           <div className="max-w-lg mx-auto py-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <div className="bg-white/70 backdrop-blur-xl p-12 rounded-[40px] shadow-2xl border border-white">
+              <button
+                onClick={() => {
+                  setStep("intro")
+                  setSuccessGift(null)
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }}
+                className="mb-10 text-sm underline"
+              >
+                ← Voltar ao Início
+              </button>
+
               <h2 className="text-3xl font-serif text-[#C65D3B] mb-6 text-center">Boas-vindas!</h2>
               <input 
                 type="text" 
@@ -164,7 +177,12 @@ export default function Home() {
                 </div>
               </div>
             )}
-
+            <button
+                onClick={() => setStep("intro")}
+                className="mb-6 text-sm underline"
+              >
+                ← Voltar ao início
+            </button>
             <header className="text-center mb-20">
               <h2 className="text-5xl font-serif text-[#C65D3B] mb-4">Nossa Seleção</h2>
               <p className="text-stone-500 italic">Cada detalhe foi pensado para o nosso novo começo.</p>
