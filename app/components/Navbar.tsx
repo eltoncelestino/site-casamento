@@ -25,6 +25,10 @@ export default function Navbar() {
 
           <Link href="/confirmar-presenca">Confirmar Presença</Link>
 
+          <Link href="/presentes">Presentes</Link>
+          
+          <Link href="/pix">PIX</Link>
+
           <Link
             href="/localizacao"
             className="hover:text-[#C65D3B] transition"
