@@ -134,8 +134,10 @@ export default function PresentesPage() {
                     <img
                       src={gift.image_url}
                       alt={gift.name}
-                      className={`h-60 w-full object-cover 
+                      className={`h-60 w-full object-contain bg-white p-4 
                       ${isReserved ? "grayscale" : ""}`}
+                      // className={`h-60 w-full object-cover 
+                      // ${isReserved ? "grayscale" : ""}`}
                     />
                   )}
 
